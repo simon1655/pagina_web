@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Búsqueda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <h1>Resultados de la Búsqueda</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Título del Libro</th>
+                <th>Autor</th>
+                <th>Categorías</th>
+                <th>Idioma</th>
+                <th>Resumen</th>
+                <th>ISBN</th>
+                <th>Portada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro.title }}</td>
+                <td>{{ libro.author }}</td>
+                <td>{{ libro.categories }}</td>
+                <td>{{ libro.language }}</td>
+                <td>{{ libro.summary }}</td>
+                <td>{{ libro.isbn }}</td>
+                <td><img src="{{ libro.cover_art_url }}" alt="Portada del libro"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

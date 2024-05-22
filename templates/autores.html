@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Autores y Libros</title>
+</head>
+<body>
+    <h1>Lista de Autores y Libros</h1>
+    <div id="autores-list"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/authors')
+                .then(response => response.json())
+                .then(data => {
+                    const autoresList = document.getElementById('autores-list');
+                    data.forEach(autor => {
+                        const autorElement = document.createElement('div');
+                        autorElement.innerHTML = `
+                            <h2>${autor.nombre}</h2>
+                            <ul>
+                                ${autor.libros.map(libro => `<li>${libro}</li>`).join('')}
+                            </ul>
+                        `;
+                        autoresList.appendChild(autorElement);
+                    });
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+.nav{
+
+    background: rgb(24, 3, 1);
+    color:#fff;
+    padding: 10px 30px;
+    text-decoration: none;
+  	display: center;
+   
+
+}
+
+
+.nav-1{
+    display: inline-block;
+    background: rgb(24, 3, 1);
+    color:#fff;
+    padding: 10px 30px;
+    text-decoration: none;
+  	display: center;
+}
+
+.nav-1:hover{
+    background: rgb(72, 6, 226);
+}
+
+body {
+    background: rgb(245, 242, 215);
+    margin-left: 15%;
+    margin-right: 15%;
+    
+}
+.divcentral1{
+    margin-top: 1px;
+    background-color: aliceblue;
+    display: flex;
+    
+
+}
+
+.vacio{
+
+    background-color: aqua;
+    margin: 5px;
+    height: 30%;
+    
+}
+.autor{
+
+    background-color: rgb(116, 116, 206);
+    position: relative;
+    margin: 1.5%;
+    width: 50%;
+    height: 50%;
+   
+    
+}
+.autorTitle{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    
+}
+.resumen{
+
+    background-color: rgb(116, 116, 206);
+    display: flex;
+    margin: 1.5%;
+    
+}
+.title{
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    
+}
+.text{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    position: relative;
+      
+}
+.img{
+    position: relative;
+}
+.temas{
+
+    background-color: lightcoral;
+    position: relative;
+    margin: 1.5%;
+    width: 50%;
+    height: 50%;
+    
+       
+}
+
+    
