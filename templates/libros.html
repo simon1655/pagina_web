@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .book {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .book img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        .book-details {
+            flex-grow: 1;
+        }
+        .book-title {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .book-author, .book-category, .book-isbn, .book-language, .book-summary {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Libros</h1>
+    <div id="books-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/books')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('books-container');
+                    data.forEach(book => {
+                        const bookDiv = document.createElement('div');
+                        bookDiv.classList.add('book');
+                        
+                        const bookCover = document.createElement('img');
+                        bookCover.src = book.cover_art_url;
+                        bookDiv.appendChild(bookCover);
+                        
+                        const bookDetails = document.createElement('div');
+                        bookDetails.classList.add('book-details');
+
+                        const bookTitle = document.createElement('h2');
+                        bookTitle.classList.add('book-title');
+                        bookTitle.textContent = book.title;
+                        bookDetails.appendChild(bookTitle);
+
+                        const bookAuthor = document.createElement('p');
+                        bookAuthor.classList.add('book-author');
+                        bookAuthor.textContent = 'Autor: ' + book.author;
+                        bookDetails.appendChild(bookAuthor);
+
+                        const bookCategory = document.createElement('p');
+                        bookCategory.classList.add('book-category');
+                        bookCategory.textContent = 'Categoría: ' + book.categories;
+                        bookDetails.appendChild(bookCategory);
+
+                        const bookISBN = document.createElement('p');
+                        bookISBN.classList.add('book-isbn');
+                        bookISBN.textContent = 'ISBN: ' + book.isbn;
+                        bookDetails.appendChild(bookISBN);
+
+                        const bookLanguage = document.createElement('p');
+                        bookLanguage.classList.add('book-language');
+                        bookLanguage.textContent = 'Idioma: ' + book.language;
+                        bookDetails.appendChild(bookLanguage);
+
+                        const bookSummary = document.createElement('p');
+                        bookSummary.classList.add('book-summary');
+                        bookSummary.textContent = 'Resumen: ' + book.summary;
+                        bookDetails.appendChild(bookSummary);
+
+                        bookDiv.appendChild(bookDetails);
+                        container.appendChild(bookDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching books:', error);
+                });
+        });
+    </script>
+</body>
+</html>
