@@ -12,7 +12,7 @@ def conectar_db():
 # Ruta para la página principal
 @app.route('/')
 def index():
-    return render_template('rev.html')
+    return render_template('dev.html')
 
 # Ruta para obtener libros en formato JSON
 @app.route('/api/books')

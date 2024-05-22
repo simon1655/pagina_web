@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='pagina.css') }}" />
+  <title>Browser</title>
+</head>
+<body class="body">
+    <nav class="nav">
+        <ul class="nav-1">Autores</ul>
+        <ul class="nav-1">Libro</ul>
+        <ul class="nav-1">Permisos</ul>
+        <ul class="nav-1">Blog</ul>
+        <ul class="nav-1">Comunidad</ul>
+    </nav>
+    <div class="vacio">
+        <h2>Libros</h2>
+        <h3>
+            <ul>
+                <li>Libros actualizados.</li>
+                <li>Novedades editoriales.</li>
+                <li>Libros mejores valorados.</li>
+                <li>Libros más visitados.</li>
+                <li>Nuevos libros.</li>
+            </ul>
+        </h3>
+    </div>
+    <div class="divcentral1" id="books">
+        <!-- Aquí se cargarán los libros dinámicamente -->
+    </div>
+    <script>
+        // Función para cargar libros desde el servidor
+        function loadBooks() {
+            fetch('/api/books')
+                .then(response => response.json())
+                .then(data => {
+                    const booksDiv = document.getElementById('books');
+                    booksDiv.innerHTML = '';
+
+                    if (data.error) {
+                        booksDiv.innerHTML = '<p>Error al cargar los libros: ' + data.error + '</p>';
+                        return;
+                    }
+
+                    data.forEach(book => {
+                        const bookDiv = document.createElement('div');
+                        bookDiv.classList.add('book');
+
+                        bookDiv.innerHTML = `
+                            <h3>${book.title}</h3>
+                            <p>Autor: ${book.author}</p>
+                            <p>Categorías: ${book.categories}</p>
+                            <p>Idioma: ${book.language}</p>
+                            <p>Resumen: ${book.summary}</p>
+                            <p>ISBN: ${book.isbn}</p>
+                            <img src="${book.cover_art_url}" alt="Cover Art" width="100" height="150">
+                        `;
+
+                        booksDiv.appendChild(bookDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Cargar libros cuando la página se carga
+        document.addEventListener('DOMContentLoaded', loadBooks);
+    </script>
+</body>
+</html>
