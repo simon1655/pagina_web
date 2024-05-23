@@ -1,0 +1,14 @@
+import sqlite3
+def agregar_columna_reseñas():
+    conexion = sqlite3.connect('base_de_datos')
+    try:
+        conexion.execute('ALTER TABLE books ADD COLUMN reseñas TEXT')
+        conexion.commit()
+        print("Columna 'reseñas' añadida correctamente.")
+    except sqlite3.OperationalError as e:
+        print(f"Error: {e}")
+    finally:
+        conexion.close()
+
+if __name__ == "__main__":
+    agregar_columna_reseñas()
