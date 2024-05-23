@@ -1,12 +1,12 @@
+<!-- pagina.html -->
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pagina.css" />
     <title>Read Rave</title>
-    <link rel="shortcut icon" href="C:\Users\james\OneDrive\Documentos\Simon\programacion\z\static" type="image/x-icon">
+    <link rel="shortcut icon" href="proyecto/logo2.png" type="image/x-icon">
 </head>
 <body>
 
@@ -18,23 +18,18 @@
                 <button type="submit">Buscar</button>
             </form>
             <div id="searchResults"></div>
+            
             <label for="menu">
-                <img src="proyecto/menu.png" class="menu-icono" alt="">
+                <img src="proyecto/menu.png" alt="">
             </label>
             <nav class="navbar">
                 <ul>
-                    <li><a href="/autores"> Autores</a> </li>
-                    <li><a href="/libros"> Libros</a> </li>
-                    <li><a href="#"> Reseñas</a> </li>
-                    <li><a href="#"> Comunidad</a> </li>
+                    <li><a href="/autores">Autores</a></li>
+                    <li><a href="/libros">Libros</a></li> <!-- Enlace actualizado -->
+                    <li><a href="#">Reseñas</a></li>
+                    <li><a href="#">Comunidad</a></li>
                 </ul>
             </nav>
-            <div class="container">
-                <form action="https://www.google.com/search"method="get"class="search-bar">
-                    <input type="text" placeholder="Buscar"name="q">
-                    <button type="submit"><img src= "proyecto/search.png" alt=""></button>
-                </form>
-            </div>
         </div>
         <div class="header-content container">
             <h1>Read Rave</h1>
@@ -44,18 +39,15 @@
         </div>    
     </header>
 
-
-    <section class= "reseñas">
-        
+    <section class="reseñas">
         <div class="reseñas-content container">
             <h2>Algunas Reseñas</h2>
-            <p class="txt-p ">
+            <p class="txt-p">
                 Reseñas por nuestros usuarios
             </p>
-
-            <div class="reseñas-group">
+            <div class="reseñas group">
                 <div class="reseñas-1">
-                    <img src="proyecto/img1.jpg" alt="">
+                    <img src="proyecto/Captura de pantalla 2024-05-04 121949.jpg" alt="">
                     <h3>Libro 1</h3>
                     <p>
                         Lorem Ipsum es simplemente el texto de relleno de las 
@@ -63,7 +55,7 @@
                     </p>
                 </div>
                 <div class="reseñas-1">
-                    <img src="proyecto/img2.jpg" alt="">
+                    <img src="proyecto/Captura de pantalla 2024-05-04 122445.jpg" alt="">
                     <h3>Libro 2</h3>
                     <p>
                         Lorem Ipsum es simplemente el texto de relleno de las 
@@ -71,7 +63,7 @@
                     </p>
                 </div>
                 <div class="reseñas-1">
-                    <img src="proyecto/img3.jpg">
+                    <img src="proyecto/Captura de pantalla 2024-05-04 122146.jpg" alt="">
                     <h3>Libro 3</h3>
                     <p>
                         Lorem Ipsum es simplemente el texto de relleno de las 
@@ -79,7 +71,7 @@
                     </p>
                 </div>
                 <div class="reseñas-1">
-                    <img src="proyecto/img4.jpg" alt="">
+                    <img src="proyecto/Captura de pantalla 2024-05-04 122410.jpg" alt="">
                     <h3>Libro 4</h3>
                     <p>
                         Lorem Ipsum es simplemente el texto de relleno de las 
@@ -91,47 +83,12 @@
         </div>
     </section>
 
-    <section class="best container">
-        <h2> Mejores libros reseñados</h2>
-        <p>libros preferidos por los usuarios</p>
-
-        <div class="best-content">
-            <div  class="best-1">
-                <img src="proyecto/mejores reseñados.jpg" alt="">
-                    <h3>Nombre del libro 1</h3>
-                    <p>
-                        Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                        Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
-                    </p>
-        </div>
-        <div  class="best-1">
-            <img src="proyecto/mejores reseñados 2.jpg" alt="">
-                <h3>Nombre del libro 2</h3>
-                <p>
-                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                    Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
-                </p>
-                <a href="#" class="btn-1">Informacion</a>
-        </div>
-         <div  class="best-1">
-            <img src="proyecto/mejores reseñados 3.jpg" alt="">
-                <h3>Nombre del libro 3</h3>
-                <p>
-                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
-                    Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
-                </p>
-                
-        </div>
-        
-    </section>
-
     <section class="general">
-        <div class=" general-1">
-            <h2>¿Quiénes Somos?</h2>
+        <div class="general-1">
+            <h2>no se</h2>
             <p>
-                Somos Read Rave,  nos dedicamos a recopilar reseñas detalladas y calificaciones de una amplia gama de libros,
-                desde clásicos atemporales hasta los últimos lanzamientos para los lectores de todo el mundo, en un espacio 
-                donde puedan descubrir, explorar y compartir sus experiencias con una amplia variedad de libros.
+                Lorem Ipsum es simplemente 
+                el texto de relleno de las imprentas y archivos de texto
             </p>
             <a href="#" class="btn-1">informacion</a>
         </div>
@@ -139,38 +96,60 @@
     </section>
 
     <section class="general">
-
         <div class="general-3"></div>
-
-        <div class=" general-1">
-            <h2>!Únete a Nosotros¡</h2>
-            <form>
-                <h2>Login</h2>
-                <label for="username">Username</label>
-                <input type="text" id="username">
-
-                <label for="password">Password</label>
-                <input type="password" id="password">
-
-                <div class="remember">
-                    <p>Recordar</p>
-                    <p>Olvide la contraseña</p>
-                </div>
-
-                <input type="submit" class="btn-1" value="Inciciar Sesión">
-            </form>
+        <div class="general-1">
+            <h2>no se</h2>
             <p>
-                Explora nuestras reseñas, comparte tus propias opiniones y únete a la conversación sobre los libros que 
-                te apasionan ya sea que seas un devorador de libros empedernido, un aficionado ocasional o alguien que 
-                simplemente busca su próxima lectura,te damos la bienvenida a unirte a nuestra comunidad en Read Rave.
+                Lorem Ipsum es simplemente 
+                el texto de relleno de las imprentas y archivos de texto
             </p>
             <a href="#" class="btn-1">informacion</a>
         </div> 
     </section>
 
+    <section class="best container">
+        <h2>Mejores libros reseñados</h2>
+        <p>Libros preferidos por los usuarios</p>
+        <div class="best-content">
+            <div class="best-1">
+                <img src="proyecto/mejores reseñados.jpg" alt="">
+                <h3>Nombre del libro 1</h3>
+                <p>
+                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
+                    Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
+                </p>
+            </div>
+            <div class="best-content">
+                <img src="proyecto/mejores reseñados 2.jpg" alt="">
+                <h3>Nombre del libro 2</h3>
+                <p>
+                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
+                    Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
+                </p>
+            </div>
+            <div class="best-content">
+                <img src="proyecto/mejores reseñados 3.jpg" alt="">
+                <h3>Nombre del libro 3</h3>
+                <p>
+                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
+                    Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150
+                </p>
+            </div>
+            <a href="#" class="btn-1">Informacion</a>
+        </div>
+    </section>
 
     <footer class="footer">
-        <div class=" footer-content container">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
             <div class="link">
                 <h3>lorem</h3>
                 <ul>
@@ -200,10 +179,8 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
-
     
 
    
