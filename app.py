@@ -13,7 +13,7 @@ def conectar_db():
 # Route for the main page
 @app.route('/')
 def index():
-    return render_template('pag.html')
+    return render_template('pagina.html')
 
 # Route for the main page
 @app.route('/libros')
