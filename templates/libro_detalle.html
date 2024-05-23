@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Libro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .book {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+        .book img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        .book-details {
+            flex-grow: 1;
+        }
+        .book-title {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .book-author, .book-category, .book-isbn, .book-language, .book-summary, .book-reseñas {
+            margin: 5px 0;
+        }
+        .reseña-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="book">
+        <h2 class="book-title">{{ libro['title'] }}</h2>
+        <div class="book-details">
+            <p class="book-author"><strong>Autor:</strong> {{ libro['author'] }}</p>
+            <p class="book-category"><strong>Categorías:</strong> {{ libro['categories'] }}</p>
+            <p class="book-language"><strong>Idioma:</strong> {{ libro['language'] }}</p>
+            <p class="book-summary"><strong>Resumen:</strong> {{ libro['summary'] }}</p>
+            <p class="book-isbn"><strong>ISBN:</strong> {{ libro['isbn'] }}</p>
+            <p class="book-reseñas"><strong>Reseñas:</strong> {{ libro['reseñas'] }}</p>
+        </div>
+    </div>
+    <div class="reseña-form">
+        <form action="{{ url_for('enviar_reseña', id=libro['id']) }}" method="post">
+            <label for="reseña">Deja una reseña:</label><br>
+            <textarea id="reseña" name="reseña" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    <a href="{{ url_for('index') }}">Volver a la página principal</a>
+</body>
+</html>
+
+

@@ -1,26 +1,25 @@
-from flask import Flask, render_template, jsonify
-from flask import request
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import sqlite3
 
 app = Flask(__name__)
 
-# Function to connect to the database
+# Función para conectar a la base de datos
 def conectar_db():
     conexion = sqlite3.connect('base_de_datos')
     conexion.row_factory = sqlite3.Row
     return conexion
 
-# Route for the main page
+# Ruta para la página principal
 @app.route('/')
 def index():
     return render_template('pagina.html')
 
-# Route for the main page
+# Ruta para la página de libros
 @app.route('/libros')
 def libros():
     return render_template('libros.html')
 
-# Route to get books in JSON format
+# Ruta para obtener libros en formato JSON
 @app.route('/api/books')
 def obtener_libros():
     conexion = conectar_db()
@@ -28,8 +27,6 @@ def obtener_libros():
     libros = [dict(row) for row in cursor.fetchall()]
     conexion.close()
     return jsonify(libros)
-
-
 
 # Función para obtener autores y sus libros de la base de datos
 @app.route('/api/authors', methods=['GET'])
@@ -78,6 +75,32 @@ def buscar():
 
     return render_template('busqueda.html', libros=libros)
 
+@app.route('/libro/<int:id>')
+def mostrar_libro(id):
+    conexion = conectar_db()
+    cursor = conexion.execute('SELECT * FROM books WHERE id = ?', (id,))
+    libro = cursor.fetchone()
+    conexion.close()
+    if libro:
+        return render_template('libro_detalle.html', libro=libro)
+    else:
+        return "Libro no encontrado", 404
+
+@app.route('/libros/<isbn>')
+def obtener_detalles_libro(isbn):
+    conexion = conectar_db()
+    cursor = conexion.execute('''
+        SELECT * FROM books
+        WHERE isbn = ?
+    ''', (isbn,))
+    libro = cursor.fetchone()
+    conexion.close()
+
+    if not libro:
+        return "Libro no encontrado", 404
+
+    return render_template('detalle_libro.html', libro=libro)
 
 if __name__ == '__main__':
     app.run(debug=True)
+

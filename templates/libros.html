@@ -54,7 +54,10 @@
 
                         const bookTitle = document.createElement('h2');
                         bookTitle.classList.add('book-title');
-                        bookTitle.textContent = book.title;
+                        const bookLink = document.createElement('a');
+                        bookLink.href = `/libro/${book.isbn}`;
+                        bookLink.textContent = book.title;
+                        bookTitle.appendChild(bookLink);
                         bookDetails.appendChild(bookTitle);
 
                         const bookAuthor = document.createElement('p');
@@ -93,3 +96,4 @@
     </script>
 </body>
 </html>
+
