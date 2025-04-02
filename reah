@@ -1,0 +1,79 @@
+create database OnlineBD;
+use OnlineBD;
+
+CREATE TABLE Cliente (
+    idCliente INT PRIMARY KEY AUTO_INCREMENT,   
+    nombreCliente VARCHAR(100) NOT NULL,        
+    emailCliente VARCHAR(100) NOT NULL UNIQUE, 
+    telefonoCliente VARCHAR(20),                
+    direccionCliente VARCHAR(255)       
+);
+
+
+CREATE TABLE Libro (
+    idLibro INT PRIMARY KEY AUTO_INCREMENT,        
+    tituloLibro VARCHAR(255) NOT NULL,             
+    autorLibro VARCHAR(100),                      
+    descripcionLibro TEXT,                       
+    precioLibro DECIMAL(10,2) NOT NULL,             
+    stockLibro INT NOT NULL,                       
+    categoriaLibro VARCHAR(50),                    
+    fechaPublicacion DATE                          
+);
+
+
+CREATE TABLE Pedido (
+    idPedido INT PRIMARY KEY AUTO_INCREMENT,          
+    idCliente INT,                                     
+    fechaPedido DATE NOT NULL,                        
+    estadoPedido ENUM('Pendiente', 'Enviado', 'Entregado', 'Cancelado') DEFAULT 'Pendiente',  
+    FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+);
+
+
+CREATE TABLE PedidoDetalle (
+    idPedidoDetalle INT PRIMARY KEY AUTO_INCREMENT,    
+    idPedidoFK INT,                                     
+    idLibroFK INT,                                       
+    cantidad INT NOT NULL,                               
+    precio DECIMAL(10, 2) NOT NULL,                     
+    FOREIGN KEY (idPedidoFK) REFERENCES Pedido(idPedido), 
+    FOREIGN KEY (idLibroFK) REFERENCES Libro(idLibro)     
+);
+
+
+
+INSERT INTO Cliente (idCliente, nomCliente, telefonoCliente, emailCliente, direccionCliente)
+VALUES(1, 'Juan Pérez', '1234567890', 'juan.perez@email.com', 'Calle Ficticia 123'),
+(2, 'Ana García', '0987654321', 'ana.garcia@email.com', 'Avenida Siempre Viva 456'),
+(3, 'Carlos López', '5551234567', 'carlos.lopez@email.com', 'Plaza Central 789'),
+(4, 'María Sánchez', '5547891230', 'maria.sanchez@email.com', 'Calle Real 101'),
+(5, 'Luis Martínez', '5556789012', 'luis.martinez@email.com', 'Bulevar del Sol 202');
+
+INSERT INTO Libro (idLibro, nomLibro, stockLibro, precioLibro)
+VALUES(1, 'Cien Años de Soledad', 30, 50000), (2, '1984', 20, 30000),
+(3, 'Don Quijote de la Mancha', 15, 45000), (4, 'El Gran Gatsby', 25, 35000),
+(5, 'Matar a un ruiseñor', 18, 40000);
+
+INSERT INTO Pedido (idPedido, idlibroFK, idClienteFK, fechaPedido)
+VALUES(1, 1, 1, '2025-04-01'), (2, 2, 2, '2025-04-02'), (3, 3, 3, '2025-04-03'),
+(4, 4, 4, '2025-04-04'), (5, 5, 5, '2025-04-05');
+
+create table LibrosPedidos(
+idLibrosPedidos int primary key,
+idLibroFK int,
+idPedidoFK int,
+cantidadLibrosPedidos int not null
+
+);
+select * from Cliente where idCliente=2;
+
+DELIMETER //
+create procedure ActualizarStock(
+	in idPedido int,
+    in idLibro int,
+    in idCliente int,
+    in fechaPedido date
+)
+begin
+	insert into Pedido(idPedido, nomLibroFK, idClienteFK)
